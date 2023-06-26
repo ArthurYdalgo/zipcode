@@ -9,7 +9,7 @@ use Traversable;
 use IteratorAggregate;
 use PragmaRX\ZipCode\Exceptions\WebServicesNotFound;
 
-class WebServices {
+class WebServices implements ArrayAccess, IteratorAggregate, Countable {
 
 	/**
 	 * The list of web services.
@@ -175,7 +175,7 @@ class WebServices {
 	 * @return boolean true on success or false on failure.
 	 * The return value will be casted to boolean if non-boolean was returned.
 	 */
-	public function offsetExists($offset)
+	public function offsetExists($offset): bool
 	{
 		return isset($this->webServices[$offset]);
 	}
@@ -188,7 +188,7 @@ class WebServices {
 	 * The offset to retrieve.
 	 * @return mixed Can return all value types.
 	 */
-	public function offsetGet($offset)
+	public function offsetGet($offset): mixed
 	{
 		return $this->webServices[$offset];
 	}
@@ -203,7 +203,7 @@ class WebServices {
 	 * The value to set.
 	 * @return void
 	 */
-	public function offsetSet($offset, $value)
+	public function offsetSet($offset, $value): void
 	{
 		if (is_null($offset))
 		{
@@ -221,7 +221,7 @@ class WebServices {
 	 * The offset to unset.
 	 * @return void
 	 */
-	public function offsetUnset($offset)
+	public function offsetUnset($offset): void
 	{
 		unset($this->webServices[$offset]);
 	}
@@ -233,7 +233,7 @@ class WebServices {
 	 * @return Traversable An instance of an object implementing Iterator or
 	 * Traversable
 	 */
-	public function getIterator()
+	public function getIterator(): Traversable
 	{
 		return new ArrayIterator($this->webServices);
 	}
@@ -245,7 +245,7 @@ class WebServices {
 	 * @return int The custom count as an integer.
 	 * The return value is cast to an integer.
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count($this->webServices);
 	}

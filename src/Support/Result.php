@@ -10,7 +10,7 @@ use IteratorAggregate;
 
 use PragmaRX\ZipCode\Exceptions\PropertyDoesNotExists;
 
-class Result extends BaseClass {
+class Result extends BaseClass implements ArrayAccess, IteratorAggregate, Countable {
 
 	/**
 	 * All public properties.
@@ -255,12 +255,12 @@ class Result extends BaseClass {
 		return $this->toJson();
 	}
 
-	public function getIterator()
+	public function getIterator(): ArrayIterator
 	{
 		return new ArrayIterator($this->publicProperties);
 	}
 
-	public function offsetExists($offset)
+	public function offsetExists($offset): bool
 	{
 		return isset($this->publicProperties[$offset]);
 	}
@@ -274,7 +274,7 @@ class Result extends BaseClass {
 	 * </p>
 	 * @return mixed Can return all value types.
 	 */
-	public function offsetGet($offset)
+	public function offsetGet($offset): mixed
 	{
 		return $this->publicProperties[$offset];
 	}
@@ -291,7 +291,7 @@ class Result extends BaseClass {
 	 * </p>
 	 * @return void
 	 */
-	public function offsetSet($offset, $value)
+	public function offsetSet($offset, $value): void
 	{
 		if (is_null($offset))
 		{
@@ -310,7 +310,7 @@ class Result extends BaseClass {
 	 * </p>
 	 * @return void
 	 */
-	public function offsetUnset($offset)
+	public function offsetUnset($offset): void
 	{
 		unset($this->publicProperties[$offset]);
 	}
@@ -324,7 +324,7 @@ class Result extends BaseClass {
 	 * <p>
 	 * The return value is cast to an integer.
 	 */
-	public function count()
+	public function count(): int
 	{
 		return count($this->publicProperties);
 	}
