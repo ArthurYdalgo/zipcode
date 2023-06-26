@@ -9,7 +9,7 @@ use Traversable;
 use IteratorAggregate;
 use PragmaRX\ZipCode\Exceptions\WebServicesNotFound;
 
-class WebServices implements ArrayAccess, IteratorAggregate, Countable {
+class WebServices {
 
 	/**
 	 * The list of web services.

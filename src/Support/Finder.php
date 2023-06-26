@@ -21,6 +21,12 @@ class Finder extends BaseClass implements FinderInterface {
 	 */
 	private $http;
 
+	public $timer;
+
+	private $result;
+
+	public $finder;
+
 	/**
 	 * The query parameters.
 	 *

@@ -22,6 +22,8 @@ class Country {
 	 */
 	private $zipLength;
 
+	private $fileSystem;
+
 	/**
 	 * The list of web services.
 	 *

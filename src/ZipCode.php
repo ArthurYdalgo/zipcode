@@ -26,6 +26,8 @@ class ZipCode extends BaseClass implements ZipCodeContract
 	 */
 	private $country;
 
+	public $finder;
+
 	/**
 	 * The current zip being searched.
 	 *
